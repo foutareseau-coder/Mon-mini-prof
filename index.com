@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Révisions 4ème</title>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfcff;--line:#cfdcf2;--margin:#e8838a;--ink:#1b2a4a;--soft:#55648a;--card:#ffffff;--ok:#1f8a4c;--ko:#c93a45;--okbg:#e3f5ea;--kobg:#fde8ea;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141b2d;--line:#25304d;--margin:#a24a55;--ink:#e6ecfb;--soft:#9aa8cc;--card:#1c2540;--ok:#5fd08a;--ko:#ff7d86;--okbg:#17382a;--kobg:#42212a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141b2d;--line:#25304d;--margin:#a24a55;--ink:#e6ecfb;--soft:#9aa8cc;--card:#1c2540;--ok:#5fd08a;--ko:#ff7d86;--okbg:#17382a;--kobg:#42212a;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;
+background-image:repeating-linear-gradient(to bottom,transparent 0 27px,var(--line) 27px 28px);min-height:100vh}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px 28px;position:relative}
+main::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:2px;background:var(--margin)}
+h1,h2,h3{font-family:"Patrick Hand","Comic Sans MS",cursive,sans-serif;font-weight:400;margin:0}
+h1{font-size:38px;line-height:1.1}
+h2{font-size:30px}
+.sub{color:var(--soft);margin:6px 0 20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sbtn{background:var(--card);border:2px solid var(--c);border-radius:6px 14px 6px 14px;padding:14px;text-align:left;color:var(--ink);cursor:pointer;font:inherit;min-height:96px;display:flex;flex-direction:column;justify-content:space-between}
+.sbtn b{font:400 24px "Patrick Hand","Comic Sans MS",cursive;color:var(--c)}
+.sbtn small{color:var(--soft)}
+button:focus-visible{outline:3px solid var(--c,#4a7bd8);outline-offset:2px}
+.back{background:none;border:0;color:var(--soft);font:inherit;cursor:pointer;padding:6px 0;margin-bottom:8px}
+.tabs{display:flex;gap:5px;margin:14px 0}
+.tabs .tab{font-size:13px;padding:9px 2px;min-width:0}
+.tab{flex:1;padding:10px;border:2px solid var(--c);background:var(--card);color:var(--ink);border-radius:999px;font:inherit;cursor:pointer}
+.tab.on{background:var(--c);color:#fff}
+.card{background:var(--card);border:2px solid var(--c);border-radius:6px 14px 6px 14px;padding:16px;margin-bottom:12px}
+.card h3{color:var(--c);font-size:24px;margin-bottom:4px}
+.card ul{margin:6px 0 0;padding-left:20px}
+.card li{margin:4px 0}
+.prog{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0 14px}
+.prog i{display:block;height:100%;background:var(--c);transition:width .3s}
+.q{font-size:20px;margin:0 0 14px;font-weight:600}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px 14px;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;font:inherit;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.ko{border-color:var(--ko);background:var(--kobg)}
+.exp{margin:12px 0;padding:12px;border-left:4px solid var(--c);background:var(--card);border-radius:0 8px 8px 0}
+.go{display:block;width:100%;padding:13px;border:0;border-radius:10px;background:var(--c);color:#fff;font:inherit;font-weight:600;cursor:pointer;margin-top:10px}
+.big{font:400 64px "Patrick Hand","Comic Sans MS",cursive;color:var(--c);text-align:center;margin:10px 0}
+.center{text-align:center}
+.why{margin:10px 0 0;padding:10px 12px;border-left:4px solid var(--c);background:var(--bg);border-radius:0 8px 8px 0}
+@media (prefers-reduced-motion:reduce){.prog i{transition:none}}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+var S=[
+{id:"maths",n:"Maths",c:"#2f6fd6",x:[["Un triangle ABC est rectangle en A, avec AB = 9 cm et AC = 12 cm. Calcule BC.","BC² = AB² + AC² = 81 + 144 = 225, donc BC = 15 cm."],["Résous 3x − 5 = 2x + 7.","3x − 2x = 7 + 5, donc x = 12. Vérification : 3 × 12 − 5 = 31 et 2 × 12 + 7 = 31."],["Un élève a eu 12 (coef. 2), 15 (coef. 3) et 9 (coef. 1). Calcule sa moyenne.","(12 × 2 + 15 × 3 + 9 × 1) ÷ 6 = (24 + 45 + 9) ÷ 6 = 78 ÷ 6 = 13."]],f:[
+["Théorème de Pythagore",["Dans un triangle rectangle : hypoténuse² = somme des carrés des deux autres côtés.","La réciproque permet de prouver qu’un triangle est rectangle."],"L’hypoténuse est le plus grand côté, en face de l’angle droit. Exemple : côtés 6 et 8 → 36 + 64 = 100, donc hypoténuse = 10. Pour la réciproque, on compare le carré du plus grand côté à la somme des deux autres carrés : s’il y a égalité, le triangle est rectangle.<br><br><b>Étapes :</b> 1) Repère l’angle droit : l’hypoténuse est le côté en face. 2) Si tu cherches l’hypoténuse, additionne les carrés des deux autres côtés, puis prends la racine carrée. 3) Si tu cherches un autre côté, soustrais : carré de l’hypoténuse − carré du côté connu."],
+["Puissances de 10",["10ⁿ × 10ᵖ = 10ⁿ⁺ᵖ ; 10ⁿ ÷ 10ᵖ = 10ⁿ⁻ᵖ ; 10⁻ⁿ = 1 ÷ 10ⁿ."],"10³ = 1 000 (trois zéros). Un exposant négatif donne un petit nombre : 10⁻² = 0,01. Pour multiplier, on additionne les exposants : 10⁴ × 10² = 10⁶.<br><br><b>En clair :</b> un exposant positif indique le nombre de zéros. Un exposant négatif indique la position du 1 après la virgule : 10⁻³ = 0,001. Écriture scientifique : 4 500 = 4,5 × 10³."],
+["Calcul littéral et équations",["Distributivité : k(a + b) = ka + kb.","Pour résoudre, on fait la même opération des deux côtés de l’égalité."],"Une équation est une balance : ce qu’on fait d’un côté, on le fait de l’autre. Exemple : 2x + 3 = 11 → 2x = 8 (on retire 3) → x = 4 (on divise par 2).<br><br><b>Méthode :</b> 1) Mets les x d’un côté et les nombres de l’autre. 2) Un nombre qui change de côté change de signe. 3) Divise par le nombre devant x. 4) Vérifie en remplaçant x dans l’équation de départ."],
+["Fractions",["On additionne après avoir mis au même dénominateur ; on multiplie numérateur × numérateur et dénominateur × dénominateur."],"Exemple : 2/3 + 1/4 → dénominateur commun 12 → 8/12 + 3/12 = 11/12. Pour multiplier, pas besoin de dénominateur commun : 2/3 × 1/4 = 2/12 = 1/6.<br><br><b>Astuce :</b> le dénominateur dit en combien de parts on coupe le tout, le numérateur combien on en prend. Pour un dénominateur commun, cherche un multiple des deux (3 et 4 → 12). À la fin, simplifie en divisant haut et bas par le même nombre."],
+["Nombres relatifs",["Addition : même signe → on additionne les distances à zéro et on garde le signe ; signes différents → on soustrait et on garde le signe du nombre le plus éloigné de zéro.","Soustraire, c’est ajouter l’opposé : a − b = a + (−b).","Multiplication et division : signes identiques → résultat positif ; signes différents → résultat négatif."],"Pense à une droite graduée ou à des dettes. −3 + 5 = 2 (on avance de 5 depuis −3). 5 − (−2) = 7 : retirer une dette, c’est gagner. (−4) × (−2) = 8 : deux moins font un plus.<br><br><b>À retenir :</b> mêmes signes → on additionne et on garde le signe : (−2) + (−3) = −5. Signes différents → on soustrait le petit du grand et on garde le signe du plus grand : (−7) + 4 = −3."],
+["Proportionnalité",["Un tableau est proportionnel si on passe d’une ligne à l’autre en multipliant par le même coefficient.","Quatrième proportionnelle : produit en croix.","Pourcentage : x % de N = N × x ÷ 100.","Vitesse : v = d ÷ t."],"Si 3 cahiers coûtent 6 €, un cahier coûte 2 €, donc 5 cahiers coûtent 10 €. Un pourcentage est une proportion sur 100 : 25 % de 80 = 80 × 25 ÷ 100 = 20.<br><br><b>Méthode :</b> 1) Trouve la valeur pour 1 (en divisant). 2) Multiplie par la quantité voulue. Ou fais le produit en croix : 3 cahiers → 6 € ; 5 cahiers → ? donc ? = 5 × 6 ÷ 3 = 10 €."],
+["Moyenne",["Moyenne = somme des valeurs ÷ nombre de valeurs.","Moyenne pondérée : on multiplie chaque valeur par son coefficient, on additionne, puis on divise par la somme des coefficients.","Étendue = plus grande valeur − plus petite valeur."],"La moyenne partage tout de façon égale. Pondérée : 12 (coef. 1) et 15 (coef. 2) → (12 + 30) ÷ 3 = 14. L’étendue mesure l’écart entre les valeurs extrêmes.<br><br><b>Méthode :</b> 1) Additionne les valeurs. 2) Divise par leur nombre. Pour une moyenne pondérée, multiplie d’abord chaque note par son coefficient, additionne, puis divise par la somme des coefficients (pas par le nombre de notes)."],
+["Nombres rationnels",["Un rationnel s’écrit a/b avec b ≠ 0. On simplifie en divisant numérateur et dénominateur par un même nombre : 12/18 = 2/3."]],
+["Statistiques et probabilités",["Médiane : valeur qui partage la série ordonnée en deux groupes de même effectif.","Probabilité = cas favorables ÷ cas possibles ; elle est toujours comprise entre 0 et 1."],"<b>Exemple :</b> série 2 ; 4 ; 4 ; 7 ; 9 → moyenne 26 ÷ 5 = 5,2 ; médiane 4 (la valeur du milieu, après avoir rangé la série). Probabilité de tirer une carte rouge dans un jeu de 52 cartes : 26 ÷ 52 = 1/2."],
+["Géométrie : espace et transformations",["Pyramide : V = aire de la base × hauteur ÷ 3. Cône : V = π × r² × h ÷ 3.","Translation et rotation conservent les longueurs, les angles et les aires.","Deux triangles sont égaux si leurs côtés sont deux à deux de même longueur."],"<b>À retenir :</b> une translation fait glisser une figure sans la tourner ; une rotation la fait tourner autour d’un point (le centre). La figure garde sa forme et sa taille. Pour le volume d’une pyramide ou d’un cône : base × hauteur ÷ 3."],
+["Algorithmique",["Variable : une case mémoire. Boucle « répéter » : on refait des instructions. Condition « si… alors… sinon » : on choisit selon un test."],"<b>Exemple pas à pas :</b> x = 3, on répète 4 fois « ajouter 2 » : 5, 7, 9, 11. Un algorithme est une suite d’ordres précis qu’un ordinateur suit un par un. Pour le vérifier, suis la valeur de chaque variable à chaque étape."],
+["Priorités et inéquations",["Ordre des calculs : parenthèses, puissances, puis × et ÷, puis + et −.","Une inéquation se résout comme une équation, mais on change le sens de l’inégalité quand on multiplie ou divise par un nombre négatif."]],
+["Fonctions",["Une fonction associe à chaque nombre x un nombre f(x). Une fonction linéaire f(x) = ax traduit une situation de proportionnalité."]],
+["Théorème de Thalès",["Si (BC) est parallèle à (MN), alors AM/AB = AN/AC = MN/BC."],"Des parallèles découpent les côtés en proportion. Exemple : AM = 2, AB = 6, AN = 3 → AC = 3 × 6 ÷ 2 = 9. Garde le même ordre des points en haut et en bas des fractions.<br><br><b>Méthode :</b> 1) Vérifie qu’il y a deux droites parallèles. 2) Écris les trois rapports égaux. 3) Garde le rapport dont tu connais trois valeurs sur quatre. 4) Fais le produit en croix."],
+["Trigonométrie",["Dans un triangle rectangle : cosinus de l’angle = côté adjacent ÷ hypoténuse."],"L’adjacent est le côté qui touche l’angle sans être l’hypoténuse. Avec la calculatrice (mode degrés), cos⁻¹(0,8) ≈ 37°. On s’en sert pour trouver un angle ou une longueur.<br><br><b>Méthode :</b> 1) Repère l’angle, l’hypoténuse et le côté adjacent. 2) Écris cos(angle) = adjacent ÷ hypoténuse. 3) Pour trouver l’angle, utilise la touche cos⁻¹ de la calculatrice."]],
+q:[["Un triangle rectangle a deux côtés de l’angle droit de 3 cm et 4 cm. Quelle est l’hypoténuse ?",["5 cm","7 cm","6 cm"],0,"3² + 4² = 9 + 16 = 25, et √25 = 5."],
+["10³ × 10⁻⁵ = ?",["10⁻²","10⁸","10⁻¹⁵"],0,"On additionne les exposants : 3 + (−5) = −2."],
+["Développe 2(x − 5).",["2x − 10","2x − 5","x − 10"],0,"On multiplie chaque terme par 2."],
+["2/3 + 1/4 = ?",["11/12","3/7","3/12"],0,"8/12 + 3/12 = 11/12."],
+["Résous 2x + 3 = 11.",["x = 4","x = 7","x = 5,5"],0,"2x = 8 donc x = 4."],
+["Un triangle a pour côtés 5, 12 et 13. Est-il rectangle ?",["Oui","Non","On ne peut pas savoir"],0,"5² + 12² = 169 = 13² : la réciproque de Pythagore s’applique."],
+["(−3) + (−5) = ?",["−8","8","−2"],0,"Même signe : on additionne 3 + 5 et on garde le signe moins."],
+["(−7) + 4 = ?",["−3","3","−11"],0,"Signes différents : 7 − 4 = 3, et −7 est le plus éloigné de zéro, donc −3."],
+["5 − (−2) = ?",["7","3","−7"],0,"Soustraire −2 revient à ajouter 2 : 5 + 2 = 7."],
+["(−6) × (−3) = ?",["18","−18","−9"],0,"Deux signes moins donnent un résultat positif."],
+["(−12) ÷ 4 = ?",["−3","3","−8"],0,"Signes différents : résultat négatif."],
+["3 stylos coûtent 4,50 €. Combien coûtent 5 stylos ?",["7,50 €","6,75 €","9 €"],0,"Un stylo coûte 4,50 ÷ 3 = 1,50 €, donc 5 × 1,50 = 7,50 €."],
+["Combien font 20 % de 150 ?",["30","20","75"],0,"150 × 20 ÷ 100 = 30."],
+["Une voiture roule 90 km en 1 h 30. Quelle est sa vitesse moyenne ?",["60 km/h","90 km/h","45 km/h"],0,"1 h 30 = 1,5 h, et 90 ÷ 1,5 = 60."],
+["Quelle est la moyenne de 12, 15, 9 et 16 ?",["13","12","13,5"],0,"(12 + 15 + 9 + 16) ÷ 4 = 52 ÷ 4 = 13."],
+["Un élève a 10 avec le coefficient 2 et 16 avec le coefficient 3. Quelle est sa moyenne ?",["13,6","13","12"],0,"(10 × 2 + 16 × 3) ÷ 5 = 68 ÷ 5 = 13,6."],
+["Quelle est l’étendue de la série 4 ; 9 ; 15 ; 7 ?",["11","15","8,75"],0,"15 − 4 = 11."],
+["Simplifie 12/18.",["2/3","3/4","4/9"],0,"On divise le haut et le bas par 6."],
+["Quelle est la médiane de 3 ; 5 ; 8 ; 10 ; 12 ?",["8","7,6","10"],0,"La valeur du milieu de la série ordonnée est 8 (7,6 est la moyenne)."],
+["On lance un dé équilibré à 6 faces. Probabilité d’obtenir un nombre pair ?",["1/2","1/3","1/6"],0,"3 cas favorables (2, 4, 6) sur 6 cas possibles."],
+["Quel est le volume d’une pyramide de base 9 cm² et de hauteur 6 cm ?",["18 cm³","54 cm³","15 cm³"],0,"9 × 6 ÷ 3 = 18."],
+["Que conserve une translation ?",["Les longueurs et les angles","Seulement les angles","Rien"],0,"C’est un déplacement sans déformation."],
+["x vaut 3. On répète 4 fois « x prend la valeur x + 2 ». Que vaut x à la fin ?",["11","9","14"],0,"3 + 2 + 2 + 2 + 2 = 11."],
+["Combien font 3 + 4 × 2 ?",["11","14","10"],0,"La multiplication est prioritaire : 4 × 2 = 8, puis 3 + 8 = 11."],
+["Résous −2x < 6.",["x > −3","x < −3","x < 3"],0,"On divise par −2, donc on change le sens : x > −3."],
+["Si f(x) = 3x, combien vaut f(4) ?",["12","7","34"],0,"On remplace x par 4 : 3 × 4 = 12."],
+["(MN) est parallèle à (BC). AM = 2, AB = 6, AN = 3. Combien vaut AC ?",["9","4","6"],0,"AM/AB = AN/AC donc 2/6 = 3/AC, d’où AC = 9."],
+["Dans un triangle rectangle, le côté adjacent mesure 4 et l’hypoténuse 5. Que vaut le cosinus de l’angle ?",["0,8","1,25","0,6"],0,"cos = adjacent ÷ hypoténuse = 4 ÷ 5 = 0,8."]]},
+{id:"fr",n:"Français",c:"#c2410c",x:[["Réécris au passif : « Le professeur corrige les copies. »","Les copies sont corrigées par le professeur. Le COD devient sujet, le verbe devient être + participe passé accordé avec ce sujet."],["Conjugue au subjonctif présent : « Il faut que (finir, nous)… » et « Il faut que (faire, tu)… »","Il faut que nous finissions. Il faut que tu fasses."],["Quelle figure de style trouves-tu ? « Ce garçon est un volcan quand il se met en colère. » Justifie.","C’est une métaphore : le garçon est comparé à un volcan sans mot de comparaison. Elle exprime une colère explosive."]],f:[
+["Fonctions dans la phrase",["Le COD répond à « qui ? » ou « quoi ? » après le verbe, sans préposition."],"Pose la question après le verbe : « Léa lit un roman » → Léa lit quoi ? un roman = COD. On peut le remplacer par un pronom : elle le lit.<br><br><b>Piège :</b> si une préposition (à, de, pour…) précède le groupe, ce n’est pas un COD mais un COI : « Il parle à Léa »."],
+["Temps du récit",["Imparfait : décors, habitudes, actions de fond.","Passé simple : actions principales, ponctuelles."],"L’imparfait pose le décor, le passé simple fait avancer l’histoire. Exemple : Il pleuvait (décor) quand le facteur sonna (action).<br><br><b>Astuce :</b> imparfait = ça dure ou ça se répète. Passé simple = ça arrive d’un coup et l’histoire avance. Passé simple du 1er groupe : il chanta, ils chantèrent."],
+["Accord du participe passé",["Avec être : il s’accorde avec le sujet.","Avec avoir : il s’accorde avec le COD placé avant le verbe."],"« Elles sont parties » : sujet féminin pluriel. « Les pommes que j’ai mangées » : le COD « que » (= les pommes) est avant le verbe. « J’ai mangé des pommes » : COD après, donc pas d’accord.<br><br><b>Méthode avec avoir :</b> 1) Cherche le COD. 2) Regarde s’il est placé avant le verbe. 3) Si oui, accorde en genre et en nombre ; sinon, ne change rien."],
+["Figures de style",["Comparaison : mot comparatif (comme, tel…).","Métaphore : comparaison sans outil."],"Comparaison : « Il est fort comme un lion. » Métaphore : « Cet homme est un lion. » Personnification : « la mer gronde » (on prête des traits humains à une chose).<br><br><b>Astuce :</b> cherche d’abord un mot de comparaison (comme, tel, semblable à). S’il n’y en a pas et que deux choses sont mises à égalité, c’est une métaphore. Ces figures rendent le texte plus imagé."],
+["Subordination",["Une proposition subordonnée dépend d’une principale. Relative : introduite par qui, que, dont. Conjonctive : introduite par que, quand, parce que, bien que…"],"Une subordonnée ne peut pas vivre seule. « Je sais que tu viendras » : « que tu viendras » dépend de « Je sais ». « Le livre qui est sur la table » : « qui est sur la table » complète le nom « livre ».<br><br><b>Méthode :</b> 1) Repère les verbes conjugués : une proposition par verbe. 2) Celle qui commence par qui, que, dont, quand, parce que… est souvent la subordonnée. 3) Celle qui peut vivre seule est la principale."],
+["Voix passive",["Le sujet subit l’action : être + participe passé + complément d’agent (par…).","Le chat mange la souris → La souris est mangée par le chat."],"Le COD de l’actif devient le sujet du passif. Le participe passé s’accorde avec ce sujet. L’ancien sujet devient complément d’agent (introduit par « par »).<br><br><b>Étapes :</b> 1) Trouve le sujet, le verbe et le COD. 2) Le COD devient sujet. 3) Écris être au même temps que le verbe + participe passé. 4) Ajoute « par » + ancien sujet. Le chat mangeait la souris → La souris était mangée par le chat."],
+["Subjonctif",["Après « il faut que », « bien que », « vouloir que ».","que je sois, que tu aies, qu’il fasse, que nous ayons."],"Le subjonctif exprime un souhait, une obligation ou un doute. On le reconnaît après « il faut que », « je veux que », « bien que » : « Il faut que tu viennes » (et non « viens »).<br><br><b>Astuce :</b> pour la plupart des verbes, prends « ils » au présent et enlève -ent : ils finissent → que je finisse. Irréguliers à connaître : que je sois, que j’aie, que je fasse, que j’aille."],
+["Argumenter",["Thèse, arguments, exemples. Connecteurs : d’abord, de plus, cependant, donc."]],
+["Les 5 thématiques de l’année",["La fiction pour interroger le réel ; Informer, s’informer, déformer ? ; Dire l’amour ; Individu et société : confrontations de valeurs ? ; La ville, lieu de tous les possibles.","Chacune est étudiée à travers une ou plusieurs œuvres. À l’oral, on s’exprime avec maîtrise devant un auditoire."]]],
+q:[["Dans « Il chante une chanson », quel est le COD ?",["une chanson","Il","chante"],0,"On demande : il chante quoi ? Une chanson."],
+["Passé simple de « chanter » à la 3e personne du singulier ?",["il chanta","il chantait","il a chanté"],0,"Chanter → il chanta."],
+["« Elles sont parti… » : quelle orthographe ?",["parties","partis","parti"],0,"Avec être, accord avec le sujet féminin pluriel."],
+["« Ses joues étaient rouges comme des tomates » est…",["une comparaison","une métaphore","une personnification"],0,"Le mot « comme » introduit la comparaison."],
+["À quoi sert surtout l’imparfait dans un récit ?",["Décrire le décor et les actions de fond","Raconter l’action principale","Parler du futur"],0,"L’imparfait installe l’arrière-plan."],
+["Quelle est la nature de « rapidement » ?",["adverbe","adjectif","nom"],0,"Il est invariable et modifie un verbe."],
+["Quelle phrase est au passif ?",["Le voleur a été arrêté par la police.","La police arrête le voleur.","Le voleur arrête la police."],0,"Schéma : être + participe passé + par…"],
+["Il faut que tu ___ patient. (être)",["sois","es","seras"],0,"« Il faut que » est suivi du subjonctif."],
+["Il faut que nous ___ du courage. (avoir)",["ayons","avons","aurons"],0,"Subjonctif présent : que nous ayons."],
+["Dans « Le livre que je lis est passionnant », « que je lis » est…",["une subordonnée relative","une proposition principale","un COD"],0,"Elle complète le nom « livre »."],
+["Quel connecteur marque l’opposition ?",["cependant","donc","de plus"],0,"Il oppose deux idées."],
+["Quelle thématique du programme interroge l’information et les fausses informations ?",["Informer, s’informer, déformer ?","Dire l’amour","La ville, lieu de tous les possibles"],0,"Elle porte sur la fabrication et la déformation de l’information."],
+["Dans un texte argumentatif, à quoi servent les exemples ?",["À illustrer et appuyer un argument","À remplacer la thèse","À conclure sans argument"],0,"Chaque argument est soutenu par un exemple."]]},
+{id:"hg",n:"Histoire-Géo",c:"#7c3aed",x:[["Calcule la densité d’un pays de 90 millions d’habitants sur 450 000 km².","90 000 000 ÷ 450 000 = 200 hab./km²."],["Explique en 3 lignes ce qu’est le commerce triangulaire.","Des navires partent d’Europe avec des marchandises, échangées en Afrique contre des captifs. Ceux-ci sont déportés vers les Amériques (Passage du Milieu) pour travailler dans les plantations. Les navires reviennent avec sucre, café ou coton."],["Cite 3 causes humaines du réchauffement climatique et 2 conséquences.","Causes : combustion du pétrole, du gaz et du charbon ; déforestation ; élevage et industrie (CO₂, méthane). Conséquences : fonte des glaciers, montée du niveau des mers, canicules."]],f:[
+["Lumières et Révolution",["Montesquieu, Voltaire, Rousseau, Diderot défendent liberté et égalité.","1789 : prise de la Bastille (14 juillet) et Déclaration des droits de l’homme (26 août)."],"Les philosophes veulent faire progresser la société grâce à la raison. Leurs idées (égalité, séparation des pouvoirs) inspirent la Révolution de 1789, qui met fin à l’Ancien Régime.<br><br><b>Repères :</b> sous l’Ancien Régime, le roi a tous les pouvoirs et la société est divisée en trois ordres (clergé, noblesse, tiers état). En 1789, le tiers état se révolte et réclame liberté et égalité."],
+["Empire et XIXe siècle",["1804 : Napoléon Ier est sacré empereur.","La révolution industrielle naît en Angleterre."]],
+["Géographie",["Mobilités humaines, migrations, tourisme et urbanisation sont les grands thèmes."]],
+["La traite négrière",["Du XVIe au XIXe siècle, environ 12 millions d’Africains sont déportés vers les Amériques.","Commerce triangulaire : Europe → Afrique → Amériques → Europe. La traversée de l’Atlantique s’appelle le Passage du Milieu.","Ports négriers français : Nantes, Bordeaux, La Rochelle. Le Code noir (1685) encadre l’esclavage dans les colonies.","Abolition définitive en France en 1848, avec Victor Schoelcher."],"Des navires partent d’Europe avec des marchandises, achètent des captifs en Afrique, les transportent aux Amériques, puis rapportent sucre, café ou coton en Europe. La traite a enrichi des ports comme Nantes.<br><br><b>Repères :</b> les captifs voyagent entassés dans des conditions terribles et beaucoup meurent pendant la traversée. Ils sont ensuite vendus et forcés de travailler dans les plantations."],
+["La densité de population",["Densité = nombre d’habitants ÷ superficie, en hab./km².","La population est très inégalement répartie : fortes densités en Asie de l’Est, en Asie du Sud, en Europe ; faibles densités dans les déserts, les montagnes et les forêts."],"Exemple : 60 millions d’habitants sur 600 000 km² → 100 hab./km². La densité est une moyenne : elle cache les écarts entre une ville et la campagne.<br><br><b>Méthode :</b> 1) Prends le nombre d’habitants. 2) Divise par la superficie en km². 3) Écris le résultat en hab./km². Plus il est grand, plus le territoire est peuplé."],
+["Le réchauffement climatique",["Il vient surtout des gaz à effet de serre (CO₂, méthane) émis par les activités humaines, en particulier la combustion des énergies fossiles.","Conséquences : fonte des glaciers, montée du niveau des mers, événements extrêmes (canicules, tempêtes).","Réponses : accord de Paris (2015), transition énergétique, adaptation des territoires."],"Les gaz à effet de serre retiennent la chaleur comme les vitres d’une serre : plus on en émet, plus la température moyenne monte. Agir, c’est réduire les émissions et s’adapter aux effets.<br><br><b>Chaîne à retenir :</b> énergies fossiles brûlées → plus de CO₂ → plus de chaleur retenue → glaciers qui fondent → mers qui montent et climat plus extrême. L’accord de Paris vise une hausse bien en dessous de 2 °C."],
+["L’indice de développement humain (IDH)",["Créé par le PNUD (ONU), il compare les pays avec 3 critères : santé (espérance de vie), éducation, niveau de vie (revenu par habitant).","Sa valeur est comprise entre 0 et 1 : plus elle est proche de 1, plus le développement est élevé."],"Le revenu seul ne suffit pas : l’IDH ajoute la santé et l’éducation. Deux pays au revenu proche peuvent avoir un IDH différent.<br><br><b>Pour lire un classement :</b> un IDH proche de 1 signifie santé, éducation et niveau de vie élevés ; un IDH faible signifie que les besoins de base sont mal couverts. Compare plusieurs pays pour voir les écarts."],
+["L’urbanisation",["Plus de la moitié de la population mondiale vit aujourd’hui en ville.","Les métropoles concentrent habitants, emplois et pouvoirs. Défis : étalement urbain, pollution, bidonvilles (habitats précaires)."],"<b>Idée simple :</b> l’urbanisation, c’est la part des habitants qui vivent en ville, et elle augmente. Une métropole attire par ses emplois et ses services, mais pose des problèmes de logement, de transports et de pollution."],
+["La mondialisation",["Intensification des échanges de marchandises, de capitaux, d’informations et de personnes.","L’essentiel des marchandises voyage par mer, en porte-conteneurs. Les firmes transnationales produisent et vendent dans plusieurs pays."],"<b>Exemple :</b> un téléphone est conçu aux États-Unis, assemblé en Asie avec des pièces de plusieurs pays, puis vendu partout. Les transports maritimes et Internet rendent ces échanges rapides et peu coûteux."],
+["Mobilités humaines transnationales",["Un migrant quitte son pays pour s’installer dans un autre. Les mobilités incluent aussi le tourisme, les études et les déplacements professionnels.","Causes des migrations : travail, études, conflits, risques climatiques."]],
+["La France au XIXe siècle",["L’industrialisation et l’exode rural transforment la société.","Le suffrage universel masculin est instauré en 1848 ; la IIIe République s’installe après 1870.","Avec Jules Ferry (années 1880), l’école devient gratuite, laïque et obligatoire."]]],
+q:[["Quand a eu lieu la prise de la Bastille ?",["14 juillet 1789","4 août 1792","1er mai 1848"],0,"C’est le début symbolique de la Révolution."],
+["Qui a écrit « De l’esprit des lois » ?",["Montesquieu","Voltaire","Diderot"],0,"Il y défend la séparation des pouvoirs."],
+["En quelle année Napoléon est-il sacré empereur ?",["1804","1789","1815"],0,"Le sacre a lieu à Notre-Dame en 1804."],
+["Dans quel pays commence la révolution industrielle ?",["Angleterre","France","Allemagne"],0,"Machine à vapeur, charbon, textile."],
+["Quand l’esclavage est-il aboli définitivement en France ?",["1848","1789","1804"],0,"Le décret est signé sous la IIe République."],
+["La Déclaration des droits de l’homme et du citoyen date de…",["1789","1799","1815"],0,"Elle est adoptée le 26 août 1789."],
+["Quels continents le commerce triangulaire relie-t-il ?",["L’Europe, l’Afrique et les Amériques","L’Europe, l’Asie et l’Océanie","L’Afrique, l’Asie et l’Amérique du Sud seulement"],0,"Les navires partent d’Europe, passent par l’Afrique, puis vont aux Amériques."],
+["Comment appelle-t-on la traversée de l’Atlantique par les navires négriers ?",["Le Passage du Milieu","La Route des Indes","Le Grand Voyage"],0,"C’est la partie la plus meurtrière du voyage."],
+["Que fait le Code noir de 1685 ?",["Il encadre l’esclavage dans les colonies","Il abolit l’esclavage","Il interdit le commerce du sucre"],0,"Il organise l’esclavage et en fixe les règles."],
+["Qui a fortement contribué à l’abolition de 1848 en France ?",["Victor Schoelcher","Montesquieu","Napoléon Ier"],0,"Il est sous-secrétaire d’État et défend l’abolition."],
+["Comment calcule-t-on la densité de population ?",["Habitants ÷ superficie","Superficie ÷ habitants","Habitants × superficie"],0,"Elle s’exprime en habitants par km²."],
+["Un pays a 60 millions d’habitants sur 600 000 km². Quelle est sa densité ?",["100 hab./km²","10 hab./km²","1 000 hab./km²"],0,"60 000 000 ÷ 600 000 = 100."],
+["Quel type d’espace est en général très peu peuplé ?",["Les déserts","Les grands deltas","Les littoraux industriels"],0,"Le milieu y est difficile (eau rare, chaleur extrême)."],
+["Quel gaz à effet de serre est le plus émis par les énergies fossiles ?",["Le dioxyde de carbone (CO₂)","Le dioxygène","L’azote"],0,"Brûler du pétrole, du gaz ou du charbon en produit beaucoup."],
+["Quelle est une conséquence du réchauffement climatique ?",["La montée du niveau des mers","La baisse des températures moyennes","La disparition des saisons partout"],0,"Elle vient de la fonte des glaces et de la dilatation de l’eau."],
+["Quel est l’objectif principal de l’accord de Paris (2015) ?",["Limiter la hausse des températures, bien en dessous de 2 °C","Interdire tous les transports","Fixer le prix du pétrole"],0,"Les États s’engagent à réduire leurs émissions."],
+["Quels sont les 3 critères de l’IDH ?",["Santé, éducation, niveau de vie","Population, superficie, climat","Armée, commerce, énergie"],0,"Espérance de vie, durée de scolarisation, revenu par habitant."],
+["Entre quelles valeurs se situe l’IDH ?",["0 et 1","0 et 100","−1 et 1"],0,"Plus il est proche de 1, plus le niveau de développement est élevé."],
+["Quelle part de la population mondiale vit en ville ?",["Plus de la moitié","Environ 10 %","Moins d’un quart"],0,"L’urbanisation continue de progresser."],
+["Qu’est-ce qu’un bidonville ?",["Un quartier d’habitats précaires","Un quartier d’affaires","Une zone industrielle"],0,"Les logements y sont précaires, souvent sans services de base."],
+["Comment définit-on la mondialisation ?",["L’intensification des échanges dans le monde","La fermeture des frontières","La disparition des villes"],0,"Elle relie les territoires par les transports et les communications."],
+["Quel moyen transporte l’essentiel des marchandises dans le monde ?",["Le bateau","L’avion","Le train"],0,"Les porte-conteneurs suivent les grandes routes maritimes."],
+["Qu’est-ce qu’une firme transnationale ?",["Une entreprise présente dans plusieurs pays","Un État","Une association de quartier"],0,"Elle produit ou vend dans plusieurs pays."],
+["Qu’est-ce qu’un migrant ?",["Une personne qui quitte son pays pour s’installer dans un autre","Un touriste de passage","Un habitant d’une grande ville"],0,"La migration implique un changement de pays de résidence."],
+["En quelle année le suffrage universel masculin est-il instauré en France ?",["1848","1789","1914"],0,"Tous les hommes adultes peuvent alors voter."],
+["Quel homme politique est associé à l’école gratuite, laïque et obligatoire ?",["Jules Ferry","Napoléon Ier","Robespierre"],0,"Les lois scolaires datent de 1881-1882."],
+["Qu’est-ce que l’exode rural ?",["Le départ des campagnes vers les villes","Le retour vers les campagnes","Un départ vers l’étranger"],0,"Il accompagne l’industrialisation au XIXe siècle."]]},
+{id:"en",n:"Anglais (LV1)",c:"#0f766e",x:[["Complète avec have ou has : She ___ lived in Lyon since 2019. They ___ never been to London.","She has lived… (she → has). They have never been… (they → have)."],["Écris des phrases avec le comparatif : Tom / Paul (tall) ; this book / that film (interesting).","Tom is taller than Paul. This book is more interesting than that film."],["Traduis : « Il est interdit de manger ici. »","You mustn’t eat here."]],f:[
+["Present perfect",["have/has + participe passé. Avec since (point de départ) et for (durée)."],"On relie le passé au présent : I have lived here for 3 years (j’y habite encore). Since 2020 = depuis 2020 ; for 3 years = pendant 3 ans. Participes irréguliers : go → gone, see → seen.<br><br><b>Construction :</b> I/you/we/they have + participe passé ; he/she/it has + participe passé. Négation : haven’t / hasn’t. Question : Have you ever been to London ?"],
+["Comparatifs",["Court : taller than. Long : more interesting than. Irréguliers : good → better, bad → worse."],"<b>Règle :</b> mot court → -er + than (taller than). Mot long → more + mot + than (more interesting than). Irréguliers : good → better, bad → worse, far → further."],
+["Modaux",["must = obligation ; mustn’t = interdiction ; can/could = capacité."]],
+["Voyages et innovation",["to travel = voyager ; a journey = un trajet ; an invention = une invention ; an inventor = un inventeur.","has been to = est allé et revenu ; has gone to = est parti (et n’est pas revenu)."]],
+["Niveaux et compétences",["5 activités langagières : lire, écrire, comprendre à l’oral, dialoguer, parler en continu.","Objectif en fin de 4e : A2 en LV1 (phrases simples, sujets familiers, décrire son environnement) ; entre A1 et A2 en LV2."]]],
+q:[["Prétérit de « go » ?",["went","goed","gone"],0,"Verbe irrégulier."],
+["I ___ lived here since 2020.",["have","has","am"],0,"Present perfect avec I → have."],
+["Comparatif de « good » ?",["better","gooder","more good"],0,"Forme irrégulière."],
+["You ___ smoke here. (interdit)",["mustn’t","don’t have to","can"],0,"mustn’t exprime l’interdiction."],
+["Participe passé de « write » ?",["written","wrote","writed"],0,"write – wrote – written."],
+["She is taller ___ me.",["than","that","as"],0,"Comparatif + than."],
+["She has ___ to London three times.",["been","gone","went"],0,"« Has been to » = y être déjà allé (et en être revenu)."],
+["What do we call a person who invents something?",["an inventor","an inventory","an investor"],0,"Inventor = inventeur."],
+["Quel niveau vise-t-on en fin de 4e en LV1 ?",["A2","B2","C1"],0,"A2 : comprendre des phrases simples et décrire son environnement."]]},
+{id:"svt",n:"SVT",c:"#15803d",x:[["Quelle est la différence entre le foyer et l’épicentre d’un séisme ?","Le foyer est le point de départ de la rupture, sous terre. L’épicentre est le point de la surface juste au-dessus du foyer, où les dégâts sont souvent les plus forts."],["Un volcan projette violemment des cendres et des gaz. Quel type d’éruption est-ce ? Justifie.","Une éruption explosive : la lave est visqueuse, elle piège les gaz qui finissent par exploser."],["Décris le trajet d’un message nerveux quand tu touches une plaque chaude.","Récepteurs de la peau → nerfs → moelle épinière → cerveau → ordre envoyé aux muscles → retrait de la main."]],f:[
+["Tectonique des plaques",["La lithosphère est découpée en plaques qui bougent.","Séismes et volcans se situent surtout aux limites des plaques."],"Les plaques bougent de quelques centimètres par an. Quand elles se frottent ou se heurtent, les tensions s’accumulent puis se libèrent brutalement : c’est un séisme. Exemple : la ceinture de feu du Pacifique.<br><br><b>Schéma mental :</b> la croûte terrestre est cassée en grandes plaques posées sur le manteau. Aux limites, elles se rapprochent, s’éloignent ou glissent : c’est là que naissent séismes et volcans."],
+["Séisme",["Le foyer est le point de départ sous terre ; l’épicentre est au-dessus, en surface."]],
+["Reproduction humaine",["La puberté est déclenchée par des hormones.","La fécondation unit un spermatozoïde et un ovule."],"À la puberté, les organes reproducteurs deviennent fonctionnels. La cellule-œuf formée à la fécondation contient l’information génétique des deux parents.<br><br><b>Étapes :</b> puberté → production de spermatozoïdes et d’ovules → rencontre des deux cellules → fécondation → cellule-œuf → embryon, puis fœtus."],
+["Diversité du vivant",["Une espèce regroupe des individus qui peuvent se reproduire entre eux et avoir des descendants fertiles.","La biodiversité est la variété des espèces, des milieux et des gènes."]],
+["Enjeux environnementaux",["Menaces sur la biodiversité : destruction des habitats, pollution, surexploitation. Agir : protéger les milieux, réduire son empreinte écologique."]],
+["Système nerveux",["Le cerveau reçoit des messages nerveux des organes des sens, les traite et envoie des ordres aux muscles.","Les neurones transmettent le message nerveux ; la moelle épinière relie le cerveau aux nerfs."],"Exemple : tu touches une plaque chaude → la peau envoie un message nerveux au cerveau, qui ordonne aux muscles de retirer la main.<br><br><b>À retenir :</b> récepteurs (sens) → nerfs sensitifs → cerveau ou moelle épinière → nerfs moteurs → muscles. Un réflexe est une réaction rapide, sans réfléchir, qui passe par la moelle épinière."],
+["Transmission de la vie",["Les testicules produisent les spermatozoïdes ; les ovaires produisent les ovules.","Après la fécondation, la cellule-œuf se divise pour former l’embryon."]],
+["Types de volcans",["Éruption effusive : lave fluide qui coule. Éruption explosive : lave visqueuse, gaz piégés, projections."]]],
+q:[["La couche rigide découpée en plaques s’appelle…",["la lithosphère","l’atmosphère","le noyau"],0,"Elle comprend la croûte et le haut du manteau."],
+["Le point d’origine d’un séisme sous terre est…",["le foyer","l’épicentre","la faille"],0,"Le foyer est en profondeur."],
+["Le point en surface au-dessus du foyer est…",["l’épicentre","le cratère","l’hypocentre"],0,"C’est là que les dégâts sont souvent les plus forts."],
+["La fécondation est la rencontre…",["d’un spermatozoïde et d’un ovule","de deux ovules","de deux hormones"],0,"Elle forme la cellule-œuf."],
+["La puberté est déclenchée par…",["des hormones","la taille","l’alimentation seule"],0,"Les hormones sexuelles provoquent les changements."],
+["Un volcan à lave très fluide a une éruption…",["effusive","explosive","aucune"],0,"Les gaz s’échappent facilement."],
+["Qu’est-ce qu’une espèce ?",["Des individus qui peuvent avoir des descendants fertiles ensemble","Tous les animaux d’un même milieu","Des individus de même taille"],0,"La définition repose sur la reproduction."],
+["Que désigne la biodiversité ?",["La variété du vivant","Le nombre d’humains","La taille des forêts"],0,"Espèces, milieux et gènes."],
+["Laquelle est une menace pour la biodiversité ?",["La destruction des habitats","Le manque de soleil","La rotation de la Terre"],0,"Déforestation et urbanisation réduisent les milieux de vie."],
+["Quelle cellule transmet le message nerveux ?",["Le neurone","Le globule rouge","L’ovule"],0,"Les neurones forment les nerfs et le cerveau."],
+["Où sont produits les spermatozoïdes ?",["Dans les testicules","Dans les ovaires","Dans l’utérus"],0,"Les ovaires, eux, produisent les ovules."],
+["Une éruption explosive est liée à une lave…",["visqueuse","très fluide","froide"],0,"Les gaz restent piégés puis explosent."]]},
+{id:"pc",n:"Physique-Chimie",c:"#be185d",x:[["Une résistance de 50 Ω est traversée par un courant de 0,2 A. Calcule la tension à ses bornes.","U = R × I = 50 × 0,2 = 10 V."],["On brûle 12 g de carbone avec 32 g de dioxygène. Quelle masse de dioxyde de carbone obtient-on ?","La masse se conserve : 12 + 32 = 44 g de dioxyde de carbone."],["Pendant un orage, tu entends le tonnerre 3 s après l’éclair. Le son parcourt 340 m/s. À quelle distance est la foudre ?","d = v × t = 340 × 3 = 1 020 m, soit environ 1 km. La lumière arrive presque instantanément."]],f:[
+["Électricité",["Tension U en volts (V), intensité I en ampères (A), résistance R en ohms (Ω).","Loi d’Ohm : U = R × I.","En dérivation, la tension est la même aux bornes de chaque branche."],"Exemple : 100 Ω traversés par 0,05 A → U = 100 × 0,05 = 5 V. En série, l’intensité est la même partout ; en dérivation, c’est la tension.<br><br><b>Méthode avec U = R × I :</b> 1) Écris la formule. 2) Remplace par les valeurs avec les bonnes unités (V, Ω, A). 3) Calcule. Pour trouver R : R = U ÷ I. Pour trouver I : I = U ÷ R."],
+["Lumière",["Vitesse dans le vide : environ 300 000 km/s."]],
+["Combustion",["Il faut un combustible et un comburant (le dioxygène)."]],
+["Atomes, molécules et air",["La matière est faite d’atomes ; une molécule est un assemblage d’atomes.","L’air contient environ 78 % de diazote, 21 % de dioxygène et 1 % d’autres gaz."]],
+["Transformations chimiques",["Les réactifs disparaissent, les produits apparaissent.","La masse totale se conserve : rien ne se perd, rien ne se crée."],"Exemple : le bois qui brûle avec le dioxygène donne du CO₂ et de l’eau. Les atomes sont les mêmes avant et après, seulement réarrangés.<br><br><b>À retenir :</b> une transformation chimique crée de nouvelles espèces (rouille, combustion). Un changement d’état (eau → glace) n’en est pas une : les molécules restent les mêmes."],
+["États de la matière",["Solide, liquide, gaz. Changements d’état : fusion (solide → liquide), vaporisation (liquide → gaz), condensation (gaz → liquide), solidification (liquide → solide).","L’eau gèle à 0 °C et bout à 100 °C (pression normale)."],"<b>Idée simple :</b> quand on chauffe, les particules s’agitent davantage : glace → eau → vapeur. Quand on refroidit, c’est l’inverse. La substance reste la même ; seul l’état change."],
+["Mouvement",["On décrit un mouvement par sa trajectoire (rectiligne, circulaire…) et sa vitesse (constante, qui augmente ou diminue), par rapport à un référentiel."]],
+["Formes d’énergie",["Énergies cinétique, thermique, électrique, chimique, lumineuse. L’énergie se convertit d’une forme à l’autre et se conserve. Unité : le joule (J)."]],
+["Signaux lumineux et sonores",["La lumière se propage en ligne droite, même dans le vide (300 000 km/s).","Le son a besoin d’un milieu matériel : environ 340 m/s dans l’air, aucun son dans le vide."]]],
+q:[["Quelle est l’unité de l’intensité du courant ?",["l’ampère","le volt","l’ohm"],0,"Symbole : A."],
+["Quelle est la loi d’Ohm ?",["U = R × I","U = R ÷ I","I = U × R"],0,"U en V, R en Ω, I en A."],
+["Vitesse de la lumière dans le vide ?",["300 000 km/s","300 km/s","30 000 km/s"],0,"Environ 3 × 10⁸ m/s."],
+["Une combustion nécessite…",["un combustible et du dioxygène","seulement de l’eau","du dioxyde de carbone"],0,"Le dioxygène est le comburant."],
+["Dans des branches en dérivation, la tension est…",["identique","additionnée","nulle"],0,"Elle est la même aux bornes de chaque branche."],
+["Formule d’une molécule d’eau ?",["H₂O","HO₂","H₂O₂"],0,"Deux atomes d’hydrogène, un d’oxygène."],
+["Quel gaz est le plus abondant dans l’air ?",["Le diazote","Le dioxygène","Le dioxyde de carbone"],0,"Il représente environ 78 % de l’air."],
+["Pendant une transformation chimique, que devient la masse totale ?",["Elle se conserve","Elle double","Elle disparaît"],0,"Les atomes sont réarrangés, pas détruits."],
+["Comment appelle-t-on les espèces qui disparaissent lors d’une transformation chimique ?",["Les réactifs","Les produits","Les catalyseurs"],0,"Les réactifs se transforment en produits."],
+["Comment s’appelle le passage de l’état liquide à l’état gazeux ?",["La vaporisation","La fusion","La condensation"],0,"La fusion va du solide au liquide ; la condensation du gaz au liquide."],
+["À quelle température l’eau bout-elle (pression normale) ?",["100 °C","0 °C","50 °C"],0,"À 0 °C, c’est la solidification."],
+["Que se passe-t-il pour le son dans le vide ?",["Il ne se propage pas","Il se propage à 340 m/s","Il va à la vitesse de la lumière"],0,"Le son a besoin d’un milieu matériel."],
+["Quelle est l’unité d’énergie ?",["Le joule","Le newton","Le watt"],0,"Symbole : J."],
+["Comment appelle-t-on une trajectoire en ligne droite ?",["Rectiligne","Circulaire","Courbe"],0,"Elle s’oppose à une trajectoire circulaire."]]},
+{id:"tech",n:"Technologie",c:"#b45309",x:[["Décris en langage courant l’algorithme d’un portail automatique avec un capteur de voiture.","Si le capteur détecte une voiture, alors le moteur ouvre le portail, sinon le portail reste fermé. Il y a un capteur, une condition et un actionneur."],["Donne 3 règles pour un mot de passe sûr.","Long (12 caractères ou plus), mélange de majuscules, minuscules, chiffres et symboles ; différent pour chaque compte ; sans informations personnelles."],["Cite les étapes de vie d’un smartphone et 2 gestes pour réduire son impact.","Conception, fabrication, utilisation, fin de vie. Gestes : le réparer et le garder plus longtemps, le faire recycler ou reconditionner."]],f:[
+["Objets techniques",["Un objet répond à un besoin. Le cahier des charges liste ses fonctions et ses contraintes.","Chaîne d’information : acquérir (capteur), traiter (carte programmable), communiquer. Chaîne d’énergie : alimenter, distribuer, convertir (actionneur, moteur), transmettre."]],
+["Programmation",["Un programme utilise des variables, des boucles (répéter) et des conditions (si… alors… sinon).","Un capteur envoie une information ; l’actionneur réalise une action."],"<b>Exemple :</b> un volet roulant. Si la lumière mesurée par le capteur est faible, alors le moteur descend le volet. Le programme répète la mesure en boucle, sans s’arrêter."],
+["Données et impact",["Protège tes données : mot de passe long, mêlant lettres, chiffres et symboles, différent pour chaque compte.","Pour limiter l’impact d’un objet : le réparer, le réutiliser, le recycler."]]],
+q:[["Quel document liste les fonctions et les contraintes d’un objet technique ?",["Le cahier des charges","Le brevet","Le mode d’emploi"],0,"Il formalise le besoin à satisfaire."],
+["Quel est le rôle d’un capteur ?",["Acquérir une information","Produire du mouvement","Stocker de l’énergie"],0,"Exemples : température, lumière, distance."],
+["Lequel est un actionneur ?",["Un moteur","Un thermomètre","Une photorésistance"],0,"Il convertit l’énergie en action."],
+["Dans un programme, à quoi sert une boucle ?",["À répéter des instructions","À choisir entre deux cas","À nommer une donnée"],0,"Par exemple : répéter 10 fois."],
+["Quel mot de passe est le plus sûr ?",["T7#mq!82Lp9x","azerty123","prenom2012"],0,"Long, varié et difficile à deviner."],
+["Comment limiter l’impact environnemental d’un objet ?",["Le réparer et le recycler","Le jeter dès qu’il est abîmé","En acheter un neuf chaque année"],0,"On allonge sa durée de vie et on récupère les matériaux."],
+["Que fait la structure « si… alors… sinon » dans un algorithme ?",["Elle choisit une action selon un test","Elle répète une action","Elle mémorise une valeur"],0,"C’est une condition."],
+["Quelle est la fonction d’une batterie dans un objet technique ?",["Alimenter en énergie","Acquérir une information","Communiquer"],0,"Elle appartient à la chaîne d’énergie."],
+["Que protège le RGPD ?",["Les données personnelles","Les brevets","Les logiciels libres"],0,"Il encadre l’usage de tes informations personnelles."],
+["Pourquoi faut-il un mot de passe différent par compte ?",["Si un compte est piraté, les autres restent protégés","Pour en changer plus souvent","Pour aller plus vite"],0,"Un seul mot de passe volé ne donne pas accès à tout."],
+["À quoi sert une variable en programmation ?",["À mémoriser une valeur","À répéter un bloc","À afficher un écran"],0,"Elle peut changer au cours du programme."],
+["Quel est l’actionneur d’un volet roulant automatique ?",["Le moteur","Le capteur de lumière","Le cahier des charges"],0,"Il convertit l’énergie en mouvement."]]},
+{id:"emc",n:"EMC",c:"#4f46e5",x:[["Explique la séparation des pouvoirs en citant les trois pouvoirs.","Législatif (le Parlement vote les lois), exécutif (le gouvernement les applique), judiciaire (les juges les font respecter). On les sépare pour éviter qu’un seul pouvoir abuse."],["Une élève est insultée en ligne à cause de ses origines. Quels principes sont en jeu ?","La liberté d’expression a des limites : l’insulte raciste est interdite. On parle de respect d’autrui, d’égalité et de harcèlement. Elle peut en parler à un adulte, signaler les messages, porter plainte."],["Explique la présomption d’innocence avec un exemple.","Une personne accusée est considérée innocente tant que sa culpabilité n’est pas prouvée devant un tribunal. Exemple : un suspect arrêté reste présumé innocent jusqu’au jugement."]],f:[
+["État de droit",["Tout le monde, y compris l’État, doit respecter la loi.","Séparation des pouvoirs : législatif (le Parlement vote les lois), exécutif (le gouvernement les applique), judiciaire (les juges les font respecter)."],"Si le gouvernement prend une décision illégale, un citoyen peut la contester devant un juge : personne n’est au-dessus de la loi.<br><br><b>Idée simple :</b> les règles valent pour tous, y compris les puissants, et un juge indépendant peut les faire respecter. Cela protège les citoyens de l’arbitraire."],
+["Libertés",["La Déclaration de 1789 protège la liberté d’expression, d’opinion et de conscience.","Ces libertés ont des limites fixées par la loi : insulte, diffamation, incitation à la haine."],"<b>Idée simple :</b> tu peux t’exprimer librement, mais sans porter atteinte aux autres. On peut critiquer une idée, pas insulter une personne à cause de son origine ou de sa religion. La loi fixe cette limite."],
+["Justice",["Présomption d’innocence : on est innocent tant que la culpabilité n’est pas prouvée.","Les mineurs relèvent de juridictions spécialisées, comme le juge des enfants."]],
+["Défense",["La défense protège le territoire et les citoyens. Tous les jeunes Français participent à la Journée défense et citoyenneté (JDC)."]],
+["Valeurs de la République",["Liberté, égalité, fraternité. La laïcité garantit la liberté de croire ou de ne pas croire et l’égalité de tous devant la loi.","Respecter autrui, c’est aussi lutter contre le harcèlement et les discriminations."]]],
+q:[["Que signifie l’État de droit ?",["Tous, y compris l’État, respectent la loi","Seul le président décide","Chacun fait ce qu’il veut"],0,"Personne n’est au-dessus de la loi."],
+["Qui vote les lois en France ?",["Le Parlement","Les tribunaux","Le maire"],0,"C’est le pouvoir législatif."],
+["Que signifie la présomption d’innocence ?",["On est innocent tant que la culpabilité n’est pas prouvée","On est coupable dès qu’on est accusé","Les juges décident sans preuves"],0,"La charge de la preuve revient à l’accusation."],
+["Parmi ces propos, lequel est interdit par la loi ?",["Une insulte raciste","Un avis critique sur un film","Un désaccord poli"],0,"La liberté d’expression a des limites."],
+["Quelle juridiction s’occupe des mineurs auteurs de délits ?",["Le juge des enfants","Le conseil municipal","Le préfet"],0,"La justice des mineurs est adaptée à leur âge."],
+["Qui participe à la Journée défense et citoyenneté ?",["Tous les jeunes Français","Seulement les militaires","Seulement les garçons"],0,"Elle sensibilise à la défense et à la citoyenneté."],
+["Quelle est la devise de la République française ?",["Liberté, Égalité, Fraternité","Travail, Famille, Patrie","Unité, Force, Honneur"],0,"Elle figure sur les bâtiments publics."],
+["Que garantit la laïcité ?",["La liberté de croire ou de ne pas croire","Une religion officielle","L’interdiction de toute religion"],0,"L’État est neutre et respecte toutes les convictions."],
+["Le harcèlement entre élèves est…",["puni par la loi","sans conséquence","autorisé hors de l’école"],0,"Il est sanctionné, y compris en ligne."]]}
+];
+var app=document.getElementById("app"),best={},seen={},QN=6;
+try{var d=JSON.parse(localStorage.getItem("rev4v2")||"{}");best=d.best||{};seen=d.seen||{}}catch(e){}
+function save(){try{localStorage.setItem("rev4v2",JSON.stringify({best:best,seen:seen}))}catch(e){}}
+function sty(s){return 'style="--c:'+s.c+'"'}
+function home(){stopT();
+ var h='<h1>Révisions 4ème</h1><p class="sub">Choisis une matière : relis la fiche, puis teste-toi.</p><div class="grid">';
+ S.forEach(function(s,i){h+='<button class="sbtn" '+sty(s)+' onclick="subj('+i+',0)"><b>'+s.n+'</b><small>'+(best[s.id]!=null?'Meilleur score : '+best[s.id]+'/'+Math.min(QN,s.q.length):'Pas encore testé')+'</small></button>'});
+ app.innerHTML=h+'</div>';window.scrollTo(0,0)}
+function tabs(i,t){var n=["Leçon","Fiche","Quiz","Entraînement"],o='';n.forEach(function(x,k){o+='<button class="tab'+(k==t?' on':'')+'" onclick="'+(k==2?'quiz('+i+')':'subj('+i+','+k+')')+'">'+x+'</button>'});return o}
+function memo(s){var h='<div class="card"><h3>À retenir</h3><ul>';s.f.forEach(function(x){h+='<li><b>'+x[0]+' :</b> '+x[1][0]+'</li>'});return h+'</ul></div>'}
+function train(s){var h='';s.x.forEach(function(e,k){h+='<div class="card"><h3>Exercice '+(k+1)+'</h3><p>'+e[0]+'</p><textarea rows="3" placeholder="Écris ta réponse ici…" style="width:100%;font:inherit;padding:8px;border:2px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)"></textarea><button class="tab" style="width:100%;margin-top:8px" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">Voir la correction</button><div class="why" hidden>'+e[1]+'</div></div>'});return h}
+function subj(i,t){stopT();
+ var s=S[i];
+ var h='<div '+sty(s)+'><button class="back" onclick="home()">‹ Matières</button><h2>'+s.n+'</h2><div class="tabs">'+tabs(i,t)+'</div>';
+ if(t==1){h+=memo(s)}else if(t==3){h+=train(s)}else s.f.forEach(function(x){h+='<div class="card"><h3>'+x[0]+'</h3><ul>'+x[1].map(function(l){return'<li>'+l+'</li>'}).join('')+'</ul>'+(x[2]?'<p class="why"><b>Pour comprendre :</b> '+x[2]+'</p>':'')+'</div>'});
+ h+='<button class="go" onclick="quiz('+i+')">Passer au quiz</button></div>';
+ app.innerHTML=h;window.scrollTo(0,0)}
+var Q,qi,sc,si;
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function quiz(i){si=i;qi=0;sc=0;var s=S[i],id=s.id,all=s.q.map(function(_,k){return k}),sn=seen[id]||[],pk=shuf(all.filter(function(k){return sn.indexOf(k)<0})).slice(0,QN);
+ if(pk.length<QN){var rest=shuf(all.filter(function(k){return pk.indexOf(k)<0})).slice(0,QN-pk.length);sn=pk.slice();pk=pk.concat(rest)}else{sn=sn.concat(pk)}
+ seen[id]=sn;save();Q=shuf(pk).map(function(k){return s.q[k]});ask()}
+var TM;
+function stopT(){clearInterval(TM)}
+function startT(q){var t=20;stopT();var el=document.getElementById("tm"),bar=document.getElementById("tb");TM=setInterval(function(){t--;el.textContent=t+" s";bar.style.width=(t*5)+"%";if(t<=0){stopT();pick(null,q)}},1000)}
+function ask(){
+ var s=S[si],q=Q[qi];
+ var opts=shuf(q[1].map(function(o,k){return{o:o,r:k===q[2]}}));
+ var h='<div '+sty(s)+'><button class="back" onclick="subj('+si+',0)">‹ '+s.n+'</button><div class="prog"><i style="width:'+(qi/Q.length*100)+'%"></i></div><p class="sub">Question '+(qi+1)+' sur '+Q.length+'<b id="tm" style="float:right">20 s</b></p><div class="prog" style="margin-top:0"><i id="tb" style="width:100%;background:var(--ko)"></i></div><p class="q">'+q[0]+'</p><div id="o">';
+ opts.forEach(function(x,k){h+='<button class="opt" data-r="'+(x.r?1:0)+'">'+x.o+'</button>'});
+ h+='</div><div id="fb"></div></div>';
+ app.innerHTML=h;window.scrollTo(0,0);
+ Array.prototype.forEach.call(document.querySelectorAll(".opt"),function(b){b.onclick=function(){pick(b,q)}});startT(q)}
+function pick(b,q){
+ stopT();var all=document.querySelectorAll(".opt"),good=b?b.dataset.r==="1":false;
+ if(good)sc++;
+ Array.prototype.forEach.call(all,function(x){x.disabled=true;if(x.dataset.r==="1")x.classList.add("ok")});
+ if(!good&&b)b.classList.add("ko");
+ var last=qi===Q.length-1;
+ document.getElementById("fb").innerHTML='<div class="exp"><b>'+(good?'Bravo !':b?'Pas tout à fait.':'Temps écoulé !')+'</b> '+q[3]+'</div><button class="go" id="nx">'+(last?'Voir mon score':'Question suivante')+'</button>';
+ document.getElementById("nx").focus();
+ document.getElementById("nx").onclick=function(){if(last)end();else{qi++;ask()}}}
+function end(){
+ var s=S[si],n=Q.length;
+ if(best[s.id]==null||sc>best[s.id]){best[s.id]=sc;save()}
+ var m=sc===n?'Parfait, tu maîtrises !':sc>=n*0.7?'Très bien, encore un effort pour le sans-faute.':sc>=n/2?'Bon début : relis la fiche puis recommence.':'Relis la fiche tranquillement, puis retente.';
+ app.innerHTML='<div '+sty(s)+' class="center"><h2>'+s.n+'</h2><div class="big">'+sc+'/'+n+'</div><p>'+m+'</p><button class="go" onclick="quiz('+si+')">Recommencer</button><button class="tab" style="width:100%;margin-top:10px" onclick="subj('+si+',0)">Relire la fiche</button><button class="back" onclick="home()">Retour aux matières</button></div>';
+ window.scrollTo(0,0)}
+home();
+</script>
+</body>
+</html>

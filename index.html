@@ -369,7 +369,7 @@ function lessonIllustration(s,x){
 function subj(i,t){stopT();
  var s=S[i];
  var h='<div '+sty(s)+'><button class="back" onclick="home()">‹ Matières</button><h2>'+s.n+'</h2><div class="tabs">'+tabs(i,t)+'</div>';
- if(t==1){h+=memo(s)}else if(t==3){h+=train(s)}else s.f.forEach(function(x){h+='<div class="card"><h3>'+x[0]+'</h3><ul>'+x[1].map(function(l){return'<li>'+l+'</li>'}).join('')+'</ul>'+(lessonIllustration(s,x))+(x[3]?'<div class="fig">'+x[3]+'</div>':'')+(x[2]?'<p class="why"><b>Pour comprendre :</b> '+x[2]+'</p>':'')+'</div>'});
+ if(t==1){h+=memo(s);h+='<button class="go" onclick="quiz('+i+')">➡️ Aller au Quiz</button>'}else if(t==3){h+=train(s);h+='<button class="back" onclick="quiz('+i+')">← Retour au quiz</button><button class="go" onclick="home()">➡️ Sommaire</button>'}else s.f.forEach(function(x){h+='<div class="card"><h3>'+x[0]+'</h3><ul>'+x[1].map(function(l){return'<li>'+l+'</li>'}).join('')+'</ul>'+(lessonIllustration(s,x))+(x[3]?'<div class="fig">'+x[3]+'</div>':'')+(x[2]?'<p class="why"><b>Pour comprendre :</b> '+x[2]+'</p>':'')+'</div>'});
  h+='<button class="go" onclick="quiz('+i+')">Passer au quiz</button></div>';
  app.innerHTML=h;window.scrollTo(0,0)}
 var Q,qi,sc,si;
@@ -401,7 +401,7 @@ function end(){
  var s=S[si],n=Q.length;
  if(best[s.id]==null||sc>best[s.id]){best[s.id]=sc;save()}
  var m=sc===n?'Parfait, tu maîtrises !':sc>=n*0.7?'Très bien, encore un effort pour le sans-faute.':sc>=n/2?'Bon début : relis la fiche puis recommence.':'Relis la fiche tranquillement, puis retente.';
- app.innerHTML='<div '+sty(s)+' class="center"><h2>'+s.n+'</h2><div class="big">'+sc+'/'+n+'</div><p>'+m+'</p><button class="go" onclick="quiz('+si+')">Recommencer</button><button class="tab" style="width:100%;margin-top:10px" onclick="subj('+si+',0)">Relire la fiche</button><button class="back" onclick="home()">Retour aux matières</button></div>';
+ app.innerHTML='<div '+sty(s)+' class="center"><h2>'+s.n+'</h2><div class="big">'+sc+'/'+n+'</div><p>'+m+'</p><button class="go" onclick="subj('+si+',3)">➡️ Entraînement</button><button class="tab" style="width:100%;margin-top:10px" onclick="quiz('+si+')">Recommencer</button><button class="tab" style="width:100%;margin-top:10px" onclick="subj('+si+',1)">Relire la fiche</button><button class="back" onclick="home()">Retour aux matières</button></div>';
  window.scrollTo(0,0)}
 home();
 </script>
